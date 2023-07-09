@@ -1,0 +1,87 @@
+<div class="container">
+  <div class="col-12 col-md-12">
+    <nav>
+      <ol class="breadcrumb objeto-preto">
+        <li class="breadcrumb-item"><a routerLink="/">Início</a></li>
+        <li class="breadcrumb-item"><a routerLink="/categoria">Listagem</a></li>
+        <li class="breadcrumb-item active texto-branco">Cadastro</li>
+      </ol>
+    </nav>
+    <div class="row mb-4">
+      <div class="col-md">
+        <h1 class="h5 border-left pl-2 texto-branco">
+          Categorias
+        </h1>
+      </div>
+      <div class="col-md-4">
+        <button routerLink="/categoria" class="btn btn-warning btn-block float-right sombra-botao">
+          <i class="fas fa-backward"></i>&nbsp;Voltar
+        </button>
+      </div>
+    </div>
+    <form class="needs-validation sombra-form" novalidate [formGroup]="categoriaForm">
+      <div class="card">
+        <div class="card-header bg-master" style="color: white;">
+          Incluir Cadastro de Categorias.
+        </div>
+        <div class="card-body corpo-form">
+          <div class="form-row col-md-12">
+            <div class="form-group col-md-1">
+              <label for="id">Código:</label>
+              <input
+                type="text"
+                class="form-control"
+                id="id"
+                formControlName="id"
+                readonly
+              />
+            </div>
+            <div class="form-group col-md-7">
+              <label for="descricao">Descrição:</label>
+              <input
+                type="text"
+                class="form-control"
+                id="descricao"
+                formControlName="descricao"
+              />
+            </div>
+            <div class="form-group col-md-4">
+              <label for="status">Status:</label>
+              <select id="status" class="form-control" formControlName="status">
+                <option>Ativo</option>
+                <option>Inativo</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-row col-md-12" >
+            <div  class="col-md-3">
+              <label for="foto">Incluir Imagem:</label>
+              <input
+                type="file"
+                class="form-control-file"
+                id="foto"
+                formControlName="imagem"
+              />
+            </div>
+            <div  class="form-group col-md-3 card mt-4">
+              <div class="d-flex justify-content-center mt-3">
+                <img  style="width: 60%; box-shadow: 2px 2px 5px black;"  class="card-img-top" />
+              </div>
+              <div class="card-body">
+                <button type="button" class="btn btn-primary col-md-12"><i class="fas fa-user-plus"></i>&nbsp;Adicionar nova Imagem</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+      <button type="submit" (click)="onSubmit()" class="btn btn-success float-right mt-3 col-md-4 sombra-botao" [disabled]="!categoriaForm.valid">
+        <i class="fas fa-save"></i> &nbsp;{{ categoriaForm.value.id == "" ? 'Salvar' : 'Alterar'}}
+      </button>
+      <div>
+        <pre class="json-branco">
+          {{ categoriaForm.value | json}}
+        </pre>
+    </div>
+  </div>
+</div>
